@@ -7,9 +7,10 @@ x-ustreamer-svc: &ustreamer-svc
     --port=8080
     --slowdown
     --device=/dev/webcam
-    --resolution=1280x960
+    --resolution=1280x720
     --format=MJPEG
     --desired-fps=30
+    --device-timeout=10
 
 ## Add your personal config here
 services:
@@ -25,3 +26,7 @@ services:
       traefik.http.routers.webcam.entrypoints: web
       traefik.http.middlewares.webcam.stripprefix.prefixes: /webcam
       traefik.http.routers.webcam.middlewares: webcam
+
+  traefik:
+    ports: !override
+      - "84:80"
