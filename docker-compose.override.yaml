@@ -14,6 +14,18 @@ x-ustreamer-svc: &ustreamer-svc
 
 ## Add your personal config here
 services:
+  klipper:
+    volumes:
+      - /data/prind/config:/opt/printer_data/config
+
+  moonraker:
+    volumes:
+      - /data/prind/config:/opt/printer_data/config
+
+  init:
+    volumes:
+      - /data/prind:/prind
+      
   webcam:
     <<: *ustreamer-svc
     devices:
